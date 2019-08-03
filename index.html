@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //打印三个一元七角一分
+        class Money {
+            static add(one, two) {//父类共有的方法
+                let res = one.n + two.n;
+                let num = res.toString().split('');
+                return `${num[0]}元, ${num[1]}角, ${num[2]}分`
+            }
+            //构造函数，里面写上对象的属性
+            constructor(n) {
+                this.n = n;
+            }
+            //方法写在后面
+            add(two) {
+                let res = this.n + two.n;
+                let num = res.toString().split('');
+                return `${num[0]}元, ${num[1]}角, ${num[2]}分`
+            }
+            valueOf() {
+                return this.n;
+            }
+            toString() {
+                let num = this.n.toString();
+                return `${num[0]}元, ${num[1]}角, ${num[2]}分`
+            }
+        }
+        let one = new Money(120);
+        let two = new Money(51);
+        let three = Money.add(one, two);
+        let four = one.add(two);
+        let five = new Money(one + two);
+        console.log(`${three}, ${four}, ${five}`);
+    </script>
+</body>
+
+</html>
